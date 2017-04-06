@@ -18,6 +18,10 @@
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.min.js"></script>
 
+
+    <script src="./require.js"></script>
+
+
 </head>
 <div id='zpkdy5mte29'></div><script>(function(){
 var rootDiv = document.getElementById('zpkdy5mte29');

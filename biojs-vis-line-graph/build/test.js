@@ -1,4 +1,4 @@
-require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Users/kaimakle/Documents/Ph.D./BIOJS/biojs-vis-line-graph/lib/axis.js":[function(require,module,exports){
+require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Users/kaimakle/Documents/Ph.D./node_web_server_simpler_biojs/biojs-vis-line-graph/lib/axis.js":[function(require,module,exports){
     /**
      * Copyright 2016 Ariane Mora
      *
@@ -324,7 +324,7 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
     }; // setup_x_axis_using_sample_types
 
 
-},{}],"/Users/kaimakle/Documents/Ph.D./BIOJS/biojs-vis-line-graph/lib/box_bar_line.js":[function(require,module,exports){
+},{}],"/Users/kaimakle/Documents/Ph.D./node_web_server_simpler_biojs/biojs-vis-line-graph/lib/box_bar_line.js":[function(require,module,exports){
     /**
      * Copyright 2016 Ariane Mora
      *
@@ -718,7 +718,7 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
 
 
 
-},{}],"/Users/kaimakle/Documents/Ph.D./BIOJS/biojs-vis-line-graph/lib/features.js":[function(require,module,exports){
+},{}],"/Users/kaimakle/Documents/Ph.D./node_web_server_simpler_biojs/biojs-vis-line-graph/lib/features.js":[function(require,module,exports){
 
     /**
      * Copyright 2016 Ariane Mora
@@ -1009,7 +1009,7 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
     }; // end setup_error_bars
 
 
-},{}],"/Users/kaimakle/Documents/Ph.D./BIOJS/biojs-vis-line-graph/lib/general.js":[function(require,module,exports){
+},{}],"/Users/kaimakle/Documents/Ph.D./node_web_server_simpler_biojs/biojs-vis-line-graph/lib/general.js":[function(require,module,exports){
 
     /**
      * Copyright 2016 Ariane Mora
@@ -1601,7 +1601,7 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
 
 
 
-},{}],"/Users/kaimakle/Documents/Ph.D./BIOJS/biojs-vis-line-graph/lib/test.js":[function(require,module,exports){
+},{}],"/Users/kaimakle/Documents/Ph.D./node_web_server_simpler_biojs/biojs-vis-line-graph/lib/test.js":[function(require,module,exports){
     /**
      * Copyright 2016 Ariane Mora
      *
@@ -2625,4 +2625,4 @@ i , graph) {
     init(init_options);
 };
 
-},{"./axis.js":"/Users/kaimakle/Documents/Ph.D./BIOJS/biojs-vis-line-graph/lib/axis.js","./box_bar_line.js":"/Users/kaimakle/Documents/Ph.D./BIOJS/biojs-vis-line-graph/lib/box_bar_line.js","./features.js":"/Users/kaimakle/Documents/Ph.D./BIOJS/biojs-vis-line-graph/lib/features.js","./general.js":"/Users/kaimakle/Documents/Ph.D./BIOJS/biojs-vis-line-graph/lib/general.js","./test.js":"/Users/kaimakle/Documents/Ph.D./BIOJS/biojs-vis-line-graph/lib/test.js"}]},{},[]);
+},{"./axis.js":"/Users/kaimakle/Documents/Ph.D./node_web_server_simpler_biojs/biojs-vis-line-graph/lib/axis.js","./box_bar_line.js":"/Users/kaimakle/Documents/Ph.D./node_web_server_simpler_biojs/biojs-vis-line-graph/lib/box_bar_line.js","./features.js":"/Users/kaimakle/Documents/Ph.D./node_web_server_simpler_biojs/biojs-vis-line-graph/lib/features.js","./general.js":"/Users/kaimakle/Documents/Ph.D./node_web_server_simpler_biojs/biojs-vis-line-graph/lib/general.js","./test.js":"/Users/kaimakle/Documents/Ph.D./node_web_server_simpler_biojs/biojs-vis-line-graph/lib/test.js"}]},{},[]);

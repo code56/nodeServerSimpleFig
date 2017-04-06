@@ -1,0 +1,32 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/kaimakle/.nvm/versions/node/v5.0.0/bin/node',
+1 verbose cli   '/Users/kaimakle/.nvm/versions/node/v5.0.0/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'watch' ]
+2 info using npm@3.3.7
+3 info using node@v5.0.0
+4 verbose run-script [ 'prewatch', 'watch', 'postwatch' ]
+5 info lifecycle biojs-vis-box-plot@0.1.9~prewatch: biojs-vis-box-plot@0.1.9
+6 silly lifecycle biojs-vis-box-plot@0.1.9~prewatch: no script for prewatch, continuing
+7 info lifecycle biojs-vis-box-plot@0.1.9~watch: biojs-vis-box-plot@0.1.9
+8 verbose lifecycle biojs-vis-box-plot@0.1.9~watch: unsafe-perm in lifecycle true
+9 verbose lifecycle biojs-vis-box-plot@0.1.9~watch: PATH: /Users/kaimakle/.nvm/versions/node/v5.0.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/kaimakle/Documents/Ph.D./node_web_server_simpler_biojs/biojs-vis-box-plot/node_modules/.bin:/Users/kaimakle/.nvm/versions/node/v5.0.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/kaimakle/Documents/Ph.D./node_web_server_simpler_biojs/biojs-vis-box-plot/node_modules/.bin:/Users/kaimakle/.nvm/versions/node/v5.0.0/bin:/Users/kaimakle/.rvm/bin:/usr/local/bin:/usr/local/bin:/usr/local/bin:/usr/local/var/rbenv/shims:/Applications/MAMP/Library/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/MAMP/Library/bin:/usr/local/munki:/usr/local/mysql/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/MAMP/Library/bin:/usr/local/munki:/usr/local/mysql/bin:/Users/kaimakle/.rvm/bin:/Applications/MAMP/Library/bin:/Users/kaimakle/.composer/vendor/binexport:/Applications/MAMP/Library/bin:/Users/kaimakle/.composer/vendor/bin
+10 verbose lifecycle biojs-vis-box-plot@0.1.9~watch: CWD: /Users/kaimakle/Documents/Ph.D./node_web_server_simpler_biojs/biojs-vis-box-plot
+11 silly lifecycle biojs-vis-box-plot@0.1.9~watch: Args: [ '-c',
+11 silly lifecycle   'watchify -r ./:biojs-vis-box-plot -v -o build/test.js' ]
+12 verbose stack Error: write EPIPE
+12 verbose stack     at Object.exports._errnoException (util.js:860:11)
+12 verbose stack     at exports._exceptionWithHostPort (util.js:883:20)
+12 verbose stack     at WriteWrap.afterWrite (net.js:763:14)
+13 verbose cwd /Users/kaimakle/Documents/Ph.D./node_web_server_simpler_biojs/biojs-vis-box-plot
+14 error Darwin 14.5.0
+15 error argv "/Users/kaimakle/.nvm/versions/node/v5.0.0/bin/node" "/Users/kaimakle/.nvm/versions/node/v5.0.0/bin/npm" "run" "watch"
+16 error node v5.0.0
+17 error npm  v3.3.7
+18 error code EPIPE
+19 error errno EPIPE
+20 error syscall write
+21 error write EPIPE
+22 error If you need help, you may report this error at:
+22 error     <https://github.com/npm/npm/issues>
+23 verbose exit [ 1, true ]

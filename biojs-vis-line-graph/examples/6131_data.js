@@ -1,4 +1,7 @@
  // if you don't specify a html file, the sniper will generate a div with id "rootDiv"
+var imported = document.createElement('script');
+imported.src = './require.js';
+document.head.appendChild(imported);
 var app = require("biojs-vis-line-graph");
 //var d3 = require("d3");
 //------------------------------------------------- EDITED FOR TESTING ----------------------------------
