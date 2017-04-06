@@ -1,4 +1,6 @@
 <<<<<<< HEAD
+This biojs component is not mine : it belongs to Ariane Mora, https://github.com/ArianeMora/biojs-vis-box-plot.git 
+I am using it as part of my project. 
 # biojs-vis-box-plot
 
 [![NPM version](http://img.shields.io/npm/v/biojs-vis-rohart-msc-test.svg)](https://www.npmjs.org/package/biojs-vis-scatter-plot) 
