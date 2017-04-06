@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head><title>Fill in your sample's metadata information</title>
+<link rel="stylesheet" type="text/css" href="./assets/autocomplete.css">
+<link rel="stylesheet" type="text/css" href="./assets/jquery-ui-1.12.0/jquery-ui.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="./assets/jquery.ui.autocomplete.html.js"></script>
+<script type="text/javascript" src="/path/to/local/autocomplete.js"></script>
+    <script type="text/JavaScript" src="/Users/kaimakle/Documents/Ph.D./node_web_server/server/HTTPServer.js"></script>
+
+<script type="text/javascript">
+
+<!--
+// This will generate the text file content based on the form data
+function buildData(){
+    var txtData = "Plant of sample: "+$("#nameField").val()+
+            "\r\nTissue of sample: "+$("#lastNameField").val());
+
+    return txtData;
+}
+// This will be executed when the document is ready
+$(function(){
+    // This will act when the submit BUTTON is clicked
+    $("#formToSave").submit(function(event){
+        event.preventDefault();
+        var txtData = buildData();
+        window.location.href="data:application/octet-stream;base64,"+Base64.encode(txtData);
+    });
+
+    // This will act when the submit LINK is clicked
+    $("#submitLink").click(function(event){
+        var txtData = buildData();
+        $(this).attr('download','sugguestedName.txt')
+            .attr('href',"data:application/octet-stream;base64,"+Base64.encode(txtData));
+    });
+});
+//-->
+
+//want to make this autocomplete form with suggestions coming from the OLS,
+// e.g. https://designshack.net/articles/javascript/create-a-simple-autocomplete-with-html5-jquery/
+</script>
+</head>
+<body>
+<input type="text" id="topic_title">
+
+<form method="post" action="" id="formToSave">
+    <dl>
+        <dt>Plant of sample:</dt>
+        <dd><input type="text" id="plant_type" value="e.g. wheat" /></dd>
+        <dt>Tissue of sample:</dt>
+        <dd><input type="text" id="tissue" value="e.g. bran" /></dd>
+    </dl>
+    <p><a href="javascript://Save as TXT" id="submitLink">Save as TXT</a></p>
+
+    <!--this button doesn't have any functionality attached to it yet-->
+    <p><button type="submit"><img src="http://www.suttonrunners.org/images/save_icon.gif" alt=""/> Save as TXT</button></p>
+</form>
+
+<!--
+<div id = "latestReview">
+    @Ajax.ActionLink("Click here to see the latest review"), 
+    "LatestReview", new AjaxOptions
+    {
+        UpdateTargetId = "latestReview",
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "GET",
+        LoadingElementId = "progress"
+})
+
+</div>
+-->
+<!--
+@using (Ajax.BeginForm("Search", "Home", new AjaxOptions {
+    HttpMethod = "GET",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "searchResults" }))
+
+{-->
+<!--     <input type = "text" name="q", class = "autocomplete" />
+ -->    
+<!--  the Url that autocomplete will use to find its data
+ -->
+<!--
+<input type="text" name="q" data-autocomplete="@Url.Action(" QuickSearch", "Home")" />
+
+<input type="submit" value="Search"/>
+-->
+
+<table id = "searchResults">
+
+</table>    
+
+
+
+</body>
+</html>

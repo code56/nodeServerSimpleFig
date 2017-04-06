@@ -1,0 +1,249 @@
+<!DOCTYPE HTML>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+<html>
+    <head>
+    <title>jQuery $.getJSON() function and jQuery UI Autocomplete</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script>  
+
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
+    <script src="https://code.jquery.com/ui/jquery-ui-git.js"></script>
+
+    <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
+
+    <a href="#" id="mylink"> My Link</a>
+
+        <script type="text/javascript">
+        	
+            //this works and captures the element from the form.
+            function myFunction() {
+                    
+                    
+                    var id = get_value();
+                    var str =  id;
+                    console.log(str);
+                //var id = "potato"; // finds the url correctly. 
+                    var url = "http://www.ebi.ac.uk/ols/api/select?q=" + encodeURIComponent(str);
+                //var url = "http://www.ebi.ac.uk/ols/api/select?q=" + id;
+
+                    console.log ("the url you entered is " + url);      
+                    document.getElementById("mylink").href = url;  
+
+
+                    function get_value(){
+
+                        var x = document.getElementById("frm1");
+                        var y = x.elements["fname"].value;
+                    //document.write("Hello " + y+ "<br>"); //works: captures the input of the form
+                   
+                        var text = "";
+                        var i;
+                        for (i = 0; i < x.length ;i++) {
+                            text += x.elements[i].value + "<br>";
+                        console.log(y);
+                        return y;
+                                             
+                        };
+
+
+
+                    }
+                    //document.getElementById("demo").innerHTML = text;
+                    //document.write(text);
+                    }
+
+
+                    // this is executed once, only after the page loads.
+            $(document).ready(function(){
+
+
+                
+                var id = myFunction();
+
+                var str =  "'"+id+"'";
+                console.log(str);
+                //var id = "potato"; // finds the url correctly. 
+                var url = "http://www.ebi.ac.uk/ols/api/select?q=" + encodeURIComponent(str);
+                //var url = "http://www.ebi.ac.uk/ols/api/select?q=" + id;
+
+                console.log ("the url you entered is " + url);
+                document.getElementById("mylink").href = url;
+
+            });
+            //var id = y; // this can be changed later to what the user types. i.e. the element of the form. 
+            //console.log(y);
+                 //   var url = "http://www.ebi.ac.uk/ols/api/select?q=" + encodeURIComponent(Y);
+                 //   console.log ("the url you entered is " + url);
+                 //   document.getElementById("mylink").href = url;
+            //});
+
+            $(document).ready(function(){
+                $.getJSON('http://www.ebi.ac.uk/ols/api/select?q=potato&rows=10&ontology=po', function(OLSresults) {
+        			// no need to do .parseJSON()
+        			console.log(OLSresults.responseHeader.params.hl); // true
+        			var results = OLSresults;
+                    console.log(results);
+
+
+                    
+                    //$(selector).autocomplete(options e.g. serviceURL);
+                    $( "#autocomplete" ).autocomplete({
+                        serviceUrl: 'http://www.ebi.ac.uk/ols/api/suggest?q=potato',
+                        onSelect: function(suggestion){
+                            alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+                        }
+
+                        }); 
+                            //console.log(array);
+                    });
+
+      		});
+       		
+        		
+        			//document.write(OLSresults.responseHeader); this works only with simple json objects, accesing complex models required recursion. 
+       		
+
+                    //good example: https://www.youtube.com/watch?v=D5pI_L2BC3A
+        $(document).ready(function(){
+            
+            // needs to be query?
+            $.getJSON('http://www.ebi.ac.uk/ols/api/select?q=potato&rows=10&ontology=po', function(OLSresults) {
+                    console.log(OLSresults.responseHeader.params.hl) // true, works
+                    //var option = OLSresults.responseHeader.params.hl
+                    var arrResults = [OLSresults];
+
+                $('#plant_type').autocomplete({
+                    //source: ['Choice 1', 'Choice 2'] // this works
+                    source : arrResults}).data("autocomplete")._renderItem = function(ul, item) {
+                    return $("<li>").data("item.autocomplete", item).append("<a>" + item.url + "</a>").appendTo(ul);
+                    };
+                });
+                //source: 'http://www.ebi.ac.uk/ols/api/select?q=potato&rows=10&ontology=po'
+                    //console.log("this is: " + option);
+                    // "hl.fl": ["label_autosuggest", "label", "synonym_autosuggest", "synonym"],
+                    // then whatever the user selects needs to be recorded. 
+                });       
+                  
+
+
+        //another function 
+
+        var OLSresults1 = $.getJSON('http://www.ebi.ac.uk/ols/api/select?q=potato&rows=10&ontology=po')
+        console.log(OLSresults1)
+        //$(document).ready(function(){
+
+        </script>
+
+
+        <script>
+        $.ajax({
+            type: 'GET',
+            url: 'http://www.ebi.ac.uk/ols/api/select?q=potato&rows=10&ontology=po',
+            dataType: 'json',
+            success: function(data) {
+      // handle response here
+            console.log("this is the data" + data);
+            console.log(data.responseHeader);
+            }
+        });
+        </script>
+ 
+ <!--       <script>
+        //new ajax from http://blog.andrewawhitaker.com/blog/2012/09/29/jqueryui-autocomplete-top-5-sources-of-confusion/"
+
+        $.ajax({
+            url: "http://www.ebi.ac.uk/ols/api/select?q=potato",
+            data: {
+                pagesize: 100,
+                order: 'desc',
+                sort: 'reputation',
+                site: 'stackoverflow'
+            },
+            dataType: "jsonp"
+        }).success(function (data) {
+        console.dir(data);
+        var source = $.map(data.items, function (user) {
+            return user.display_name;
+        });
+
+        $("input").autocomplete({
+            source: source
+            });
+        });
+        </script>
+-->
+
+
+
+    <!--http://www.codeproject.com/Articles/762959/jQuery-UI-Autocomplete-in-MVC-Selecting-Nested-Ent -->
+    <script>
+    $(function () {
+        $('.autocomplete-with-hidden').autocomplete({
+            minLength: 0,
+            source: function (request, response) {
+                var url = $(this.element).data('http://www.ebi.ac.uk/ols/api/select?q=potato&rows=10&ontology=po');
+   
+                $.getJSON(url, { term: request.term }, function (data) {
+                response(data);
+                })
+            },
+            select: function (event, ui) {
+                $(event.target).next('input[type=hidden]').val(ui.item.id);
+            },
+            change: function(event, ui) {
+                if (!ui.item) {
+                    $(event.target).val('').next('input[type=hidden]').val('');
+                }
+            }
+        });
+    })
+
+
+
+    </script>
+
+    
+
+
+  
+
+
+    <body>
+        <input type="text" name="country" id="autocomplete"/>
+
+        <input type="text" id="ajax" list="jsondatalist" placeholder="e.g. datalist">    
+        <datalist id="jsondatalist"></datalist>
+
+        <input type="text" id="plant_type" name = "name1" value="e.g. wheat"/>
+
+
+
+<!--         this form works
+ -->        
+        <form id="frm1">
+            First name: <input type="text" name="fname" value="Donald"><br>
+            Last name: <input type="text" name="lname" value="Duck"><br><br>
+        <input type="submit" value="Submit">
+        </form>
+
+
+        <p>Click "Try it" to display the value of each element in the form.</p>
+
+        <button onclick= "window.myFunction()">Try it</button>
+
+        <p id="demo"></p>
+
+       
+        <form>
+        Plant of sample:<b>
+        <input type="text" name="plantName" id="plant_type1" value="e.g. wheat"><br>
+        Tissue of sample:<br>
+        <input type="text" name = "tissueName" id="tissue" value="e.g. bran" /></dd>
+        <input type = "submit" value="Submit";
+        </form>
+
+    </body>    
+
+</html>

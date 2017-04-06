@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+<!--this is the autocomplete_Render.html file that if the functional one which is the OLS blah-->
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+<html>
+    <head>
+        <meta charset="utf-8">
+    <title>jQuery $.getJSON() function and jQuery UI Autocomplete and autocomplete.js</title>
+
+<!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script>  -->
+<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="crossorigin="anonymous"></script>
+<script type="text/javascript" src="/assets/autocomplete.js"></script>  
+<script type="text/javascript" src="/assets/test_autocomplete.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.0.js"
+                integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="
+                crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!--
+<script type="text/javascript" src="jquery.autocomplete.min.js"></script>
+-->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
+<link href="/assets/autocomplete.css" rel="Stylesheet"></link>
+<link href="/assets/selected.css" rel="Stylesheet"></link>
+
+
+<script type="text/javascript">
+
+    //must look into why the autosuggestion drop down appears above the box.
+
+    var data = [
+        { value: "W", label: "Wheat" },
+        { value: "R", label: "Rice" },
+        { value: "B", label: "Barley" },
+
+    ];
+
+
+
+    $(function() {
+
+        $("#autocomplete2").autocomplete({
+            source: data,
+            focus: function(event, ui) {
+                // prevent autocomplete from updating the textbox
+                event.preventDefault();
+                // manually update the textbox
+                $(this).val(ui.item.label);
+            },
+            select: function(event, ui) {
+                // prevent autocomplete from updating the textbox
+                event.preventDefault();
+                // manually update the textbox and hidden field
+                $(this).val(ui.item.label);
+                $("#autocomplete2-value").val(ui.item.value);
+            }
+        });
+    });
+
+    //the uploaded file should be read and sent to the server once the 'send' button is clicked
+   // document.getElementById('send').addEventListener('click', function(evt){
+        
+    function myFunction() {
+    document.getElementById("demo").innerHTML = "Hello World";
+    }
+
+     $( function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  } );
+
+</script>
+
+
+
+<script type="text/javascript">
+
+
+var chosen = "";
+$(document).keydown(function(e){ // 38-up, 40-down
+    console.log("this keycode script runs")
+    if (e.keyCode == 40) { 
+        if(chosen === "") {
+            chosen = 0;
+        } else if((chosen+1) < $('li').length) {
+            chosen++; 
+        }
+        $('li').removeClass('selected');
+        $('li:eq('+chosen+')').addClass('selected');
+        var result = $('li:eq('+chosen+')').text();
+        $('.autosuggest1').val(result);  
+        return false;
+    }
+    if (e.keyCode == 38) { 
+        if(chosen === "") {
+            chosen = 0;
+        } else if(chosen > 0) {
+            chosen--;            
+        }
+        $('li').removeClass('selected');
+        $('li:eq('+chosen+')').addClass('selected');
+        var result = $('li:eq('+chosen+')').text();
+        $('.autosuggest1').val(result);  
+        return false;
+    }
+});
+
+</script>
+
+
+
+</head>
+
+    <body>
+        <!-- HTML -->
+
+    <P>Please select the developmental stage of of your sample</P>
+           <input id="autocomplete-example" data-autocomplete-param-name="rows=100&ontology=po&q"
+        data-autocomplete="http://www.ebi.ac.uk/ols/api/select/" autocomplete="off"/>
+<!-- 
+        <input id="autocomplete-example" data-autocomplete-param-name="propertyValue=disease&filter=required:[cttv]"
+        data-autocomplete="http://www.ebi.ac.uk/spot/zooma/v2/api/services/annotate" autocomplete="off"/> -->
+    <!--<div class = "autocomplete" id="autocomplete-example"></div>-->
+       <!--  <button id="send">register your metadata</button><br /><br /> -->
+    <button onclick="myFunction()">Register your metadata</button>
+    <p id ="demo"></p> 
+
+
+    <P>Please select the organism of your sample</P>
+        <input id="autocomplete-example1" data-autocomplete-param-name="rows=50&ontology=ncbitaxon&q"
+        data-autocomplete="http://www.ebi.ac.uk/ols/api/select/" autocomplete="off"/>
+
+    <div class="ui-widget">
+  <label for="tags">Tags: </label>
+  <input id="tags">
+</div>
+
+   <!--  <p>Plant type<br>
+        <input id="autocomplete2" type="text" >
+        <input id="autocomplete2-value" type="text" name="code"></p>
+ -->
+
+  <!--   <input type="text" name="suggest" class="autosuggest1">
+   <div class="dropdown">
+        <ul class="result1">
+            <li>--Select one--</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </div> -->
+
+
+    </body>    
+
+</html>
+
+
+<!-- GET http://www.ebi.ac.uk/ols/api/select/?rows=50&ontology=po&q=po
+ -->	
+<!-- //what does iri=obo do? i found it from the new ols website.  -->
+
+<!-- &iri=obo -->
+
+<!-- http://www.ebi.ac.uk/spot/zooma/v2/api/services/annotate?propertyValue=disease&filter=required:[cttv]
+-->
