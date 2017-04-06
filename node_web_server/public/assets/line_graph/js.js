@@ -75,7 +75,7 @@ show_axis = "no"
 
 d3.tsv(data_url,function (error,data){
     increment_value = 6;
-    graph_box_width = 900;
+    graph_box_width = 500; //so the box plot fits the wrap width that I have in the page
     normal_graph_box_width = 900;
     var multi_group = sortByOption.split(",").length;
     max = 0;
@@ -227,7 +227,7 @@ d3.tsv(data_url,function (error,data){
         /********   Options for Data order *****************************************/
         // If no orders are given than the order is taken from the dataset
         bar_graph: "yes",
-        box_width: 50,
+        box_width: 30,
         box_width_wiskers: 15,
         second_sort_by_order: "no", //Order of the second_sort_by state on the x axis
         sample_type_order: dataset_data["sampleTypeDisplayOrder"], //Order of the sample types on the x axis

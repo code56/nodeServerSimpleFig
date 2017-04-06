@@ -993,9 +993,18 @@ button.ui-button::-moz-focus-inner {
     left: 0;
     right: 0;
     margin: 0;
-    width: 1000px;
+    width: 627px;
     background-color:  #FFFFFF;
     overflow-y: auto;
     max-height: 85%;
-    height:auto;
+    height: 500px;
+}
+
+.snippetDiv {
+
+    padding: 10px;
+    float: center;
+    position: relative;
+    width: 627px;
+    height: 500px;
 }

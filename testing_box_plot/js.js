@@ -39,8 +39,8 @@ var tooltip = d3.tip()
     });
 
 //The url's to the data displayed
-data_url= 'https://cdn.rawgit.com/ArianeMora/biojs-vis-box-plot/master/data/ds_id_5003_scatter_gata3.tsv';
-//data_url = 'https://cdn.rawgit.com/ArianeMora/biojs-vis-box-plot/master/data/ds_id_2000_scatter_stat1.tsv';
+//data_url= 'https://cdn.rawgit.com/ArianeMora/biojs-vis-box-plot/master/data/ds_id_5003_scatter_gata3.tsv';
+data_url = 'https://cdn.rawgit.com/ArianeMora/biojs-vis-box-plot/master/data/ds_id_2000_scatter_stat1.tsv';
 //data_url = 'https://cdn.rawgit.com/ArianeMora/biojs-vis-box-plot/master/data/ds_id_2000_scatter_pdgfd.tsv';
 
 
