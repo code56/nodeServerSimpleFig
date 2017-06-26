@@ -36,7 +36,7 @@ var connection = mysql.createConnection({
   host : 'localhost',
   user : 'root',
   password: 'root',
-  database : 'expvip_related',
+  database : 'simpler-component',
   port: 8889,
  // socket: 'localhost:/Applications/MAMP/tmp/mysql/mysql.sock' // is this necessary? 
   // do i need an adapter? 
