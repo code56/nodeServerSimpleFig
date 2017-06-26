@@ -78,7 +78,7 @@ var request = require ('reqwest');            // simplified HTTP request client
   });
  */
 
-  connection.query('SELECT name FROM genes', function(err, rows) {
+ /* connection.query('SELECT name FROM genes', function(err, rows) {
     console.log(err);
     if (!err)
       console.log('Data received from Db:\n');
@@ -90,7 +90,7 @@ var request = require ('reqwest');            // simplified HTTP request client
     };
     //console.log('The gene name is: ', rows); 
   });
-
+*/
   connection.end();
 
 
@@ -100,7 +100,10 @@ var request = require ('reqwest');            // simplified HTTP request client
   //});
 
   //define the port we want to listen to
-  const PORT=8182; 
+
+
+
+  const PORT=8183; 
 
   app.use(express.static("../public"));        //put accesible public directory and its sub directories
   app.set('views', '../views');                //put accesible views

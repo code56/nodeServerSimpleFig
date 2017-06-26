@@ -1,4 +1,4 @@
-
+// this is the Javascript file for the scatterplot. 
 
 
 setup_data_scatter = function (svgID) {
