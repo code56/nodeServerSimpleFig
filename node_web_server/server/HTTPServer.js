@@ -34,8 +34,8 @@ var encoding = 'utf8';
 var mysql = require('mysql');                  // kitaxe pou evala to mysql kai pou to kalo.
 var connection = mysql.createConnection({
   host : 'localhost',
-  user : 'root',
-  password: 'root',
+  user : 'simpler-component',
+  password: 'simpler-component',
   database : 'simpler-component',
   port: 3306,
  // socket: 'localhost:/Applications/MAMP/tmp/mysql/mysql.sock' // is this necessary? 
