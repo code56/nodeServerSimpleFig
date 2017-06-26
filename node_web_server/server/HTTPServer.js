@@ -37,7 +37,7 @@ var connection = mysql.createConnection({
   user : 'root',
   password: 'root',
   database : 'simpler-component',
-  port: 3306:3306,
+  port: 3306,
  // socket: 'localhost:/Applications/MAMP/tmp/mysql/mysql.sock' // is this necessary? 
   // do i need an adapter? 
 });
