@@ -29,7 +29,7 @@
 var update_graph_type = function(graph_type) {
     options.graph_type = graph_type;
     document.body.innerHTML = '';
-    draw_graph("../data/stat1.tsv");
+    //draw_graph("../data/stat1.tsv");
 
 }
 
@@ -97,7 +97,8 @@ var options = {
         id: 'Sample_ID', // Unique ID for each data point in the Dataset
     },
     svg_info: {
-        div_id: rootDiv.id, // The ID of the div you want to draw the graph in.
+        //div_id: rootDiv.id, // The ID of the div you want to draw the graph in.
+        div_id: biojs-vis-scatter-plot,
         width: 1000,
         height: 500,
         margin: {top: 150, left: 50, bottom: 200, right: 150},
@@ -470,10 +471,12 @@ var group_data = function (graph) {
 var setup_svg = function (graph) {
     var options =  graph.options.svg_info;
 
-    var svg = d3.select("body").append("svg")
+    /*var svg = d3.select("body").append("svg")
             .attr("width", options.width + options.margin.left + options.margin.right)
-            .attr("height", options.height + options.margin.top + options.margin.bottom); // Add the height of the action panel
+            .attr("height", options.height + options.margin.top + options.margin.bottom); */// Add the height of the action panel
     
+    var svg = d3.select("#" + options.svg_info.div_id).append("svg")
+
     var group = svg.append("g")
             .attr("transform", "translate(" + options.margin.left + "," + options.margin.top + ")");
     var options =  graph.options.action_panel;
