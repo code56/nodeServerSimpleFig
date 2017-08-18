@@ -29,7 +29,7 @@
 var update_graph_type = function(graph_type) {
     options.graph_type = graph_type;
     document.body.innerHTML = '';
-    //draw_graph("../data/stat1.tsv");
+    draw_graph(options.data.url);
 
 }
 
@@ -48,7 +48,7 @@ var update_graph_type = function(graph_type) {
 var update_stat_tests = function (stat_test) {
     options.data.statistical_test = stat_test;
     document.body.innerHTML = '';
-    draw_graph("../data/stat1.tsv");
+    draw_graph(options.data.url);
 }
 
 
@@ -74,7 +74,7 @@ var options = {
         statistical_test: 'log2',
         default_min_value: 0, // Means y_axis will be at most 0 (or less)
         default_max_value: 0, // Means y_axis will be at least 0 (or more)
-        url: 'data/test_simple.tsv',
+        url: 'https://github.com/ArianeMora/biojs-graph-suite/blob/master/data/stat1.tsv',
         /**
          * Value is the main value that is used for plotting the data.
          * In the case of Stemformatics, this corrosponds to the header
@@ -98,7 +98,7 @@ var options = {
     },
     svg_info: {
         //div_id: rootDiv.id, // The ID of the div you want to draw the graph in.
-        div_id: biojs-vis-scatter-plot,
+        div_id: "biojs-vis-scatter-plot",
         width: 1000,
         height: 500,
         margin: {top: 150, left: 50, bottom: 200, right: 150},
@@ -859,4 +859,4 @@ var create_buttons = function (graph) {
     return graph;
 }
 
- draw_graph("../data/stat1.tsv");
+ draw_graph(options.data.url);
