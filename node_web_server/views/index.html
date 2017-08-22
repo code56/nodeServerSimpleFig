@@ -146,15 +146,12 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":
 
 <!-- <script src="../assets/line_graph/lib/index.js" data-turbolinks-track="true"></script>
  -->
-<script src="../assets/line_graph/lib/main.js" data-turbolinks-track="true"></script>
-
 
 <!-- <script src="../assets/line_graph/line.js" data-turbolinks-track="true"></script>
  -->
 <link type="text/css" rel="stylesheet" href= "https://cdn.rawgit.com/ArianeMora/biojs-vis-box-plot/844b0be2/biojs/css/biojs-vis-box-plot.css">
 
 
-<script type="text/JavaScript" src="/Users/kaimakle/Documents/Ph.D./node_web_server_simpler_biojs/node_web_server/server/HTTPServer.js"></script>
 
 </head><body class="html not-front not-logged-in page-node page-node- page-node-14151 node-type-elife-article-ver context-content">
 <!-- Google Tag Manager -->
@@ -310,6 +307,9 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":
 <!-- <script src="../assets/line_graph/js.js"></script> 
  -->
 
+<script src="../assets/line_graph/lib/main.js" data-turbolinks-track="true"></script>
+
+<script type="text/JavaScript" src="/Users/kaimakle/Documents/Ph.D./node_web_server_simpler_biojs/node_web_server/server/HTTPServer.js"></script>
 
 
 <!-- placeholder for the interactiver figure <div class="D">  -->
@@ -318,11 +318,12 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":
 <script type="text/javascript">
   //biovisexpressionbar = require("bio-vis-expression-bar");
 
- /* var container_div = "biojs-vis-scatter-plot";
+ 
+  var container_div = "biojs-vis-scatter-plot";
   
 //later I will be getting the data from the SQL Db upon user request
   var data_url = "../assets/line_graph/data/line_graph_6151.csv" ;
-  var app = require('biojs-vis-scatter-plot'); 
+  /*var app = require('biojs-vis-scatter-plot'); 
 
   var options = {
    background_colour: "white",
