@@ -32,8 +32,7 @@ var multer = require('multer');                 // v1.0.5 - for handling multipa
 var upload = multer();
 var encoding = 'utf8';
 //var mysql = require('mysql');                  // kitaxe pou evala to mysql kai pou to kalo.
-var connection = ""
-/*mysql.createConnection({
+var connection = mysql.createConnection({
   host : 'localhost',
   user : 'simpler-component',
   password: 'simpler-component',
@@ -62,7 +61,7 @@ var request = require ('reqwest');            // simplified HTTP request client
     console.log('connected!');
     };
   });
-*/
+
 
 /*  
   app.get('/', function(req, resp){
@@ -92,7 +91,8 @@ var request = require ('reqwest');            // simplified HTTP request client
     //console.log('The gene name is: ', rows); 
   });
 */
-  //connection.end();
+  
+    connection.end();
 
 
   // elexe to afto ti kani
