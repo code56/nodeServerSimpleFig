@@ -27,9 +27,9 @@
  * 
  */
 var update_graph_type = function(graph_type) {
-    options.graph_type = graph_type;
-    document.body.innerHTML = '';
-    //draw_graph("../data/stat1.tsv");
+    box_bar_options.graph_type = graph_type;
+    document.getElementById(box_bar_options.svg_info.div_id).innerHTML = '';
+    draw_graph();
 
 }
 
@@ -46,9 +46,9 @@ var update_graph_type = function(graph_type) {
  * 
  */
 var update_stat_tests = function (stat_test) {
-    options.data.statistical_test = stat_test;
-    document.body.innerHTML = '';
-    draw_graph("../data/stat1.tsv");
+    box_bar_options.data.statistical_test = stat_test;
+    document.getElementById(box_bar_options.svg_info.div_id).innerHTML = '';
+    draw_graph();
 }
 
 
@@ -57,6 +57,8 @@ var update_stat_tests = function (stat_test) {
  *                          Variable setup
  *
  * --------------------------------------------------------------------------*/
+// Set up the graph as a global variable.
+var graph = {};
 
 var colours = ["DarkOrchid", "Orange", "DodgerBlue", "Blue", "BlueViolet", "Brown", "Deeppink", "BurlyWood", "CadetBlue",
     "Chartreuse", "Chocolate", "Coral", "CornflowerBlue", "Crimson", "Cyan", "Red", "DarkBlue",
@@ -65,7 +67,7 @@ var colours = ["DarkOrchid", "Orange", "DodgerBlue", "Blue", "BlueViolet", "Brow
     "DarkViolet", "DeepPink", "DeepSkyBlue", "DodgerBlue", "FireBrick", "ForestGreen", "Fuchsia",
     "Gold", "GoldenRod", "Green", "GreenYellow", "HotPink", "IndianRed", "Indigo"];
 
-var options = {
+var box_bar_options = {
     // Things we want consistant accross everything 
     font_family: "'Varela Round', sans-serif",
     font_size: "12px",
@@ -74,7 +76,7 @@ var options = {
         statistical_test: 'log2',
         default_min_value: 0, // Means y_axis will be at most 0 (or less)
         default_max_value: 0, // Means y_axis will be at least 0 (or more)
-        url: 'data/test_simple.tsv',
+        url: '/assets/data/stat1.tsv',
         /**
          * Value is the main value that is used for plotting the data.
          * In the case of Stemformatics, this corrosponds to the header
@@ -98,18 +100,19 @@ var options = {
     },
     svg_info: {
         //div_id: rootDiv.id, // The ID of the div you want to draw the graph in.
-        div_id: biojs-vis-scatter-plot,
+        div_id: "box-bar-plot",
         width: 1000,
-        height: 500,
-        margin: {top: 150, left: 50, bottom: 200, right: 150},
+        height: 450,
+        margin: {top: 150, left: 15, bottom: 200, right: 50},
         stroke: "#AEB6BF",
         stroke_width: "1px",
+        scale: 0.9, // Used to scale elements to fit in the elife page
         number_aixs_ticks: 10,
     },
     action_panel: {
         width: 1000,
         height: 80,
-        margin: {top: 20, left: 100, bottom: 10, right: 0},
+        margin: {top: 20, left: 50, bottom: 0, right: 0},
         btn_width: 150,
         btn_height: 40,
         btn_padding: 10,
@@ -121,7 +124,7 @@ var options = {
         buttons: [
                 {action:"update_stat_tests", value:"log2", text:"log2 Data"},
                 {action:"update_stat_tests", value:"e2", text:"exp2 Data"},
-                {action:"update_stat_tests", value:"none", text:"Raw Data"},
+                {action:"update_stat_tests", value:"raw", text:"Raw Data"},
                 {action:"update_graph_type", value:"box", text:"Change to Box Plot"},
                 {action:"update_graph_type", value:"bar", text:"Change to Bar Graph"},
             ]
@@ -135,7 +138,7 @@ var options = {
 };
 
 var get_options = function () {
-    return options;
+    return box_bar_options;
 }
 
 /** --------------------------------------------------------------------------
@@ -150,19 +153,18 @@ var get_options = function () {
  * Add this data to the graph object as """raw_data""".
  * 
  * --------------------------------------------------------------------------*/
-var draw_graph = function (data_url) {
-
+var setup_graph_data = function (data_url) {
     d3.tsv(data_url, function (error, data) {
         // Setup the main graph object
-        var graph = {};
         graph.options = get_options();
         var options = graph.options;
+	    graph.options.data.url = data_url;
         /** Ensure that the data is being read in as an 
           * integer rather than a string.
           * Add to a list as """raw_values""". */
 
         graph.parsed_data = [];
-
+        graph.parsed_data_raw = [];
         // Keep track of the max and min values for the dataset
         var min_value = graph.options.data.default_min_value;
         var max_value = graph.options.data.default_max_value;
@@ -173,13 +175,21 @@ var draw_graph = function (data_url) {
             tmp.value = +d[options.data.value];
             tmp.standard_dev = +d[options.data.standard_dev];
 
+            var raw_tmp = {};
+            raw_tmp.id = d[options.data.id];
+            raw_tmp.value = +d[options.data.value];
+            raw_tmp.standard_dev = +d[options.data.standard_dev];
+
+
             // Add each of the groups to the data
             for (var sub_group in options.data.groups) {
                 tmp[sub_group] = d[options.data.groups[sub_group]];
+                raw_tmp[sub_group] = d[options.data.groups[sub_group]];
             };
             
             // Add to our array of parsed_data
             graph.parsed_data.push(tmp);
+            graph.parsed_data_raw.push(raw_tmp);
 
             // Check if this value is the new max or min
             if (tmp.value < min_value) {
@@ -201,7 +211,17 @@ var draw_graph = function (data_url) {
         graph.max_value = max_value;
         graph.min_value = min_value;
         graph.raw_data = data;
-        
+        draw_graph();
+    })
+
+}
+
+/**
+ * new_graph == true means that it is a new graph 
+ * so we need to parse the data again
+ */
+var draw_graph = function () {
+        var options = graph.options;
         /** -------------------------------------------------
          * Data has been read in start drawing the graphs etc.
          * -------------------------------------------------*/
@@ -236,7 +256,6 @@ var draw_graph = function (data_url) {
        
         // Add the buttons
         graph = create_buttons(graph);
-    });
 
 };
 
@@ -328,19 +347,43 @@ var perform_statistical_test = function (test_type, graph) {
         graph = perform_ex2_test(graph);
         return graph;
     }
+    if (test_type == 'raw') {
+        graph = return_raw_graph(graph);
+        return graph;
+    }
     // Otherwise leave unchanged.
     return graph;
 };
-    
+
+var return_raw_graph = function (graph) {
+    var min_value = graph.options.data.default_min_value;
+    var max_value = graph.options.data.default_max_value;
+
+    for (var d in graph.parsed_data_raw) {
+        graph.parsed_data[d].value = (graph.parsed_data_raw[d].value);
+        graph.parsed_data[d].standard_dev = (graph.parsed_data_raw[d].standard_dev);
+        if (graph.parsed_data[d].value < min_value) {
+            min_value = graph.parsed_data[d].value;
+        }
+        if (graph.parsed_data[d].value > max_value) {
+            max_value = graph.parsed_data[d].value;
+        }
+    }
+    graph.max_value = max_value;
+    graph.min_value = min_value;
+    return graph;
+
+};
+
 var perform_log2_test = function (graph) {
     // Log2 the data i.e. data = ln(data)
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log2
     var min_value = graph.options.data.default_min_value;
     var max_value = graph.options.data.default_max_value;
 
-    for (var d in graph.parsed_data) {
-        graph.parsed_data[d].value = Math.log2(graph.parsed_data[d].value);
-        graph.parsed_data[d].standard_dev = Math.log2(graph.parsed_data[d].standard_dev);
+    for (var d in graph.parsed_data_raw) {
+        graph.parsed_data[d].value = Math.log2(graph.parsed_data_raw[d].value);
+        graph.parsed_data[d].standard_dev = Math.log2(graph.parsed_data_raw[d].standard_dev);
         if (graph.parsed_data[d].value < min_value) {
             min_value = graph.parsed_data[d].value;
         }
@@ -359,9 +402,9 @@ var perform_ex2_test = function (graph) {
     var min_value = graph.options.data.default_min_value;
     var max_value = graph.options.data.default_max_value;
 
-    for (var d in graph.parsed_data) {
-        graph.parsed_data[d].value = Math.exp(graph.parsed_data[d].value);
-        graph.parsed_data[d].standard_dev = Math.exp(graph.parsed_data[d].standard_dev);
+    for (var d in graph.parsed_data_raw) {
+        graph.parsed_data[d].value = Math.exp(graph.parsed_data_raw[d].value);
+        graph.parsed_data[d].standard_dev = Math.exp(graph.parsed_data_raw[d].standard_dev);
         if (graph.parsed_data[d].value < min_value) {
             min_value = graph.parsed_data[d].value;
         }
@@ -373,7 +416,6 @@ var perform_ex2_test = function (graph) {
     graph.min_value = min_value;
     return graph;
 }
-
 
 /**
  * Group the data. 
@@ -475,14 +517,17 @@ var setup_svg = function (graph) {
             .attr("width", options.width + options.margin.left + options.margin.right)
             .attr("height", options.height + options.margin.top + options.margin.bottom); */// Add the height of the action panel
     
-    var svg = d3.select("#" + options.svg_info.div_id).append("svg")
+    var svg = d3.select("#" + options.div_id).append("svg")
+	   .attr("preserveAspectRatio", "xMinYMin meet")       
+	   .attr("viewBox", "0 0 " + (options.width + options.margin.left + options.margin.right) + " " + (options.height + options.margin.top + options.margin.bottom))	
+   	   .classed("svg-content-responsive", true);
 
     var group = svg.append("g")
-            .attr("transform", "translate(" + options.margin.left + "," + options.margin.top + ")");
+            .attr("transform", "translate(" + options.margin.left + "," + options.margin.top + ")scale(" + options.scale + ")");
     var options =  graph.options.action_panel;
 
     var action_panel = svg.append("g")
-            .attr("transform", "translate(" + graph.options.action_panel.margin.left + "," + graph.options.action_panel.margin.top + ")");
+            .attr("transform", "translate(" + graph.options.action_panel.margin.left + "," + graph.options.action_panel.margin.top + ")scale("+ options.scale + ")");
 
     graph.action_panel = action_panel;
     
@@ -572,7 +617,7 @@ var make_bar_graph = function (graph) {
     // This is calculated in the setup_axis function.
     var box_size = graph.size_of_group/2;
     var grouped_data = graph.grouped_data;
-
+    var options = graph.options;
     // For each of the groups we want to make a box plot
     for (var g in grouped_data) {
         // Need to calculate the box plot values based on the
@@ -859,4 +904,4 @@ var create_buttons = function (graph) {
     return graph;
 }
 
- draw_graph("../data/stat1.tsv");
+
