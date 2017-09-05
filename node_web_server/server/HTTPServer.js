@@ -31,7 +31,7 @@ var jsonParser = bodyParser.json();
 var multer = require('multer');                 // v1.0.5 - for handling multipart/form-data - for uploading files
 var upload = multer();
 var encoding = 'utf8';
-//var mysql = require('mysql');                  // kitaxe pou evala to mysql kai pou to kalo.
+var mysql = require('mysql');                  // kitaxe pou evala to mysql kai pou to kalo.
 var connection = mysql.createConnection({
   host : 'localhost',
   user : 'simpler-component',
