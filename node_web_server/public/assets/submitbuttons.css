@@ -1,0 +1,28 @@
+/* Buttons, yay! */
+button,
+input[type="reset"],
+input[type="submit"],
+input[type="button"] {
+  background: #22a0d8;
+  border: 0;
+  color: #fff;
+  padding: 4px 10px;
+  text-shadow: none;
+  font-size: 16px;
+
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding;
+          background-clip: padding-box;
+  -webkit-transition: background-color 0.3s ease-in-out;
+     -moz-transition: background-color 0.3s ease-in-out;
+       -o-transition: background-color 0.3s ease-in-out;
+          transition: background-color 0.3s ease-in-out;
+}
+button:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+  background: #59B8E2;
+}
