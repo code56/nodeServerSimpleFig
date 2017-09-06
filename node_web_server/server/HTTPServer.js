@@ -240,28 +240,20 @@ var mime = require('mime');
   });
 
 
-  //telling express to listen to requests to / and run the function when it sees one
+/*  //telling express to listen to requests to / and run the function when it sees one
   app.get('/getdata', function(req,res){
    // res.send('hello world'); //this works but replace with data
     // res.render('../assets/line_graph/data/line_graph_6151.csv');
     res.render('getdata.html');
-  });
+  });*/
 
   app.get('/download', function(req, res){
 
     res.setHeader('Content-disposition', 'attachment; filename=line_graph_6151.csv');
 
     res.setHeader('Content-type', 'csv');
-
-    var path_to_file = '../assets/line_graph/data/line_graph_6151.csv';
-
-    var file1 = fs.readFile(path.normalize(__dirname + '/../public/assets/line_graph/data/line_graph_6151.csv'));
-
-
     
     var file = (path.normalize(__dirname + '/../public/assets/line_graph/data/line_graph_6151.csv'));
-
-    //console.log("the file is" + file);
 
     var filename = path.basename(filename);
     var mimetype = mime.lookup(file);
