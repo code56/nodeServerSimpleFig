@@ -101,6 +101,9 @@ MathJax.Hub.Config({
 
   <link rel="stylesheet" type="text/css" href="assets/line_graph/css/biojs-vis-line-graph.css"/>
 
+  <link rel="stylesheet" type="text/css" href="assets/submitbuttons.css"/>
+
+
   <script type="text/javascript" src="http://elifesciences.org.c.elifesciences.ent.platform.sh/profiles/elife_profile/modules/contrib/jquery_update/replace/jquery/1.8/jquery.min.js?v=1.8.3"></script>
 <script type="text/javascript" src="http://elifesciences.org.c.elifesciences.ent.platform.sh/misc/jquery.once.js?v=1.2"></script>
 <script type="text/javascript" src="http://elifesciences.org.c.elifesciences.ent.platform.sh/misc/drupal.js?o8g5gl"></script>
@@ -137,11 +140,7 @@ MathJax.Hub.Config({
 </script>
   <!--[if lt IE 9]><script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-<!--Calling the BioJS component JS script of Wheat expression browser.    -->
-<!--for now I will try the browersify js script see if it works -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" ></script>
-
-<!--script src="../assets/application-ef96501f028dba65c10a08512d37267546d1a1c3c78159b1f1e139aa66b7b98d.js" data-turbolinks-track="true"></script>-->
 
 <script src="../assets/require.js" data-turbolinks-track="true"></script>
 
@@ -150,13 +149,8 @@ MathJax.Hub.Config({
 <!-- <script src="../assets/line_graph/line.js" data-turbolinks-track="true"></script>
  -->
 <!--<link type="text/css" rel="stylesheet" href="https://cdn.rawgit.com/ArianeMora/biojs-vis-box-plot/master/css/biojs-vis-box-plot.css">-->
-<link type="text/css" rel="stylesheet" href= "https://cdn.rawgit.com/ArianeMora/biojs-vis-box-plot/844b0be2/biojs/css/biojs-vis-box-plot.css">
-
-
-
-<!--<script src="../views/bio-vis-expression-bar-browserified.js" data-turbolinks-track="true"></script> it doesn't work with teh bio-visexpression-bar.js meaning the browserify is not building the file correctly-->
-    <!--Calling the node server script.    -->
-
+<!-- <link type="text/css" rel="stylesheet" href= "https://cdn.rawgit.com/ArianeMora/biojs-vis-box-plot/844b0be2/biojs/css/biojs-vis-box-plot.css">
+ -->
 
 <script type="text/JavaScript" src="/Users/kaimakle/Documents/Ph.D./node_web_server_simpler_biojs/node_web_server/server/HTTPServer.js"></script>
 
@@ -465,6 +459,7 @@ var instance = new app(options);
     min-width: 160px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    font-size: 20px;
 }
 
 .dropdown-content a {
@@ -477,6 +472,7 @@ var instance = new app(options);
 .dropdown a:hover {background-color: #f1f1f1}
 
 .show {display:block;}
+
 </style>
 
 <h2>Select the data you would like to display in the Interactive Figure</h2>
@@ -487,7 +483,7 @@ var instance = new app(options);
 <select name="select" id="myDropdown" class="dropdown-content">
   <option value = "data_1" > Data 1</option>
 <option value = "data_2" > Data 2</option>
-  </select>
+  </select></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" ></script>
 <script type="text/javascript" src="../assets/select_the_data.js"></script>
@@ -557,6 +553,23 @@ var instance = new app(options);
   <div style="width: 50%; float:left; margin: 1%; background-color: white;"></div>
 </div>
 
+
+<style>
+
+.fsSubmitbutton {
+   background-color: #4CAF50; /* Green */
+   border: none;
+   color: white;
+   padding: 15px 32px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+}
+
+</style>
+
+
 <form action="download" method="get">
 <input type="submit" value="Download the Data of the Figure">
 </form>
@@ -602,64 +615,6 @@ var instance = new app(options);
          name="Submit" />
 
 </form>
-
-<!--
-<FORM NAME="myform" ACTION="" METHOD="POST">
-Enter something in the box: <BR>
-<INPUT TYPE="text" NAME="inputbox" VALUE=""><P>
-<INPUT TYPE="button" NAME="button" Value="Click" onClick="testResults(this.form)">
-</FORM>-->
-
-<!-- <form action="writeToFile1 " method="post">
-<textarea name="text">testing</textarea>
-<button onclick="writeToFile1">Click to save</Button>  
-</form> 
- -->
-
-
-<!-- <form action="php1" method="get">
-    <input type="submit" value="submit your informationPHP" 
-         name="Submit" id="PHP1" />
-</form> -->
-
-<!-- 
-<div class="page-header"><h1>Metadata Entry1</h1></div><div id="well"><form action="php1" method="get"><label for="keyword">URL metadata information:</label><input type="text" id="keyword" name="keyword" placeholder="Enter the metadata information for tissue sample to register" size="100"/><button type="submit11111" class="btn btn-default btn-sm active">Enter</button><span class="help-block">Example: leaf</span></form></div><div class="page-header">
- -->
-
-
-
-<!-- <div class="page-header1"></div>
-
-	<h1>enter your name</h1>
-
-<script type="text/javascript">
-
-// <script language="javascript">
-function WriteToFile()
-{
-	var fso = new ActiveXObject("Scripting.FileSystemObject");
-	var s = fso.CreateTextFile("new.txt", true);
-	var text=document.getElementById("TextArea1").innerText;
-	s.WriteLine(text);
-	s.WriteLine('***********************');
-	s.Close();
-}
-</script>
-
-
-
-<form name="abc">
-<textarea name="text">FIFA</textarea>
-<button onclick="WriteToFile()">Click to save</Button>  
-</form> 
- -->
-
-
-
-<!-- <div id="well"><form action="data" method="post"><button type="submit" class="btn btn-default btn-sm active">Enter</button></form></div><div class="page-header">
- -->
-
-
 
 
 
