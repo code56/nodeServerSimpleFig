@@ -307,59 +307,6 @@ MathJax.Hub.Config({
 <script src="https://wzrd.in/bundle/biojs-vis-box-plot@0.1.9"></script>
 <script src="../assets/line_graph/js.js"></script> 
 
-
-
-
-<!-- placeholder for the interactiver figure <div class="D">  -->
-	<!-- //change the width to keep it lie the page width-->
- 
- <!--	<div id="bar_expression_viewer"> </div>
-</div>
-
-
-<script type="text/javascript">
-  //biovisexpressionbar = require("bio-vis-expression-bar");
-
-  var container_div="bar_expression_viewer";
-  
-  //later I will be getting the data from the SQL Db upon user request
-  var data_url = "../assets/30839.json" ;
-
-  var gene = "Traes_5BS_0AFC3F795.1" ;
-  var eb =  new biovisexpressionbar.ExpressionBar({
-    target: container_div,
-    highlight: gene, 
-    data: data_url,
-    renderProperty: 'tpm', 
-    fontFamily:'Palatino Linotype, Book Antiqua, Palatino, serif', 
-    groupBy: ["High level stress-disease", "High level age","High level tissue","High level variety"], 
-    barHeight:10,
-    width:1000,
-    headerOffset:100
-  });
-
-
-
-  //$("#bar_expression_viewer_sort_div").disableSelection(); //need to move this to the js component
-
-  // still necessary or remove?
-  function WriteToFile()
-	{
-	var fso = new ActiveXObject("Scripting.FileSystemObject");
-	var s = fso.CreateTextFile("NEW.txt", true);
-	var text=document.getElementById("TextArea1").innerText;
-	s.WriteLine(text);
-	s.WriteLine('***********************');
-	s.Close();
-	}
-
-</script>
--->
-<!-- <div class="wrapper">  //change the width to keep it lie the page width
- 	<div id="biojs-vis-scatter-plot"> </div>
-</div>
- -->
-
 <script type="text/javascript">
   //biovisexpressionbar = require("bio-vis-expression-bar");
 
@@ -586,11 +533,19 @@ var instance = new app(options);
 </form>
 
 
+<div style="width:100%; height: 40px; background-color: white;">
+  <div style="width: 40%; float:left; margin: 1%; background-color: white;"></div>
+</div>
+
 <form action="metadata" method="get">
-    <input type="submit" value="define your metadata" 
+    <input type="submit" value="Define your metadata" 
          name="Submit" id="frm3_submit" />
 </form>
 
+
+<div style="width:100%; height: 40px; background-color: white;">
+  <div style="width: 40%; float:left; margin: 1%; background-color: white;"></div>
+</div>
 
 <!-- this with the press of the button links to another htlm page of the clickform.html-->
 <form action="clickform" method="get">
@@ -599,12 +554,16 @@ var instance = new app(options);
 </form>
 
 
+<div style="width:100%; height: 40px; background-color: white;">
+  <div style="width: 40%; float:left; margin: 1%; background-color: white;"></div>
+</div>
+
 <!-- new web form for data submission with writing to a text file-->
-<form action="web_form" method="get">
+<!--<form action="web_form" method="get">
     <input type="submit" value="submit your information WEB FORM" 
          name="Submit" id="frm1_submit" />
 </form>
-
+!-->
 <!-- this form works to echo the message to the browser. I want to capture the entries to the form to be writing to the server-->
 
 
