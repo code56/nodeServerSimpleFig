@@ -43,6 +43,13 @@ var connection = mysql.createConnection({
 });
 var request = require ('reqwest');            // simplified HTTP request client
 
+// for downloading the data file
+var path = require('path');
+    fs = require('fs');
+var mime = require('mime');
+
+
+
 
 
 //initialize a JSON parser so we can receive JSON objects from the client
@@ -190,7 +197,7 @@ var request = require ('reqwest');            // simplified HTTP request client
 
   //*** registry component acction send from /register***//
   // box filling
-  // currently not working
+  // currently not working (in drupal server, was registering the user input into a database)
   app.post('/registermetadata', function(req, res) {
     //res.send('You sent the URL "' + req.body.schema + '".');
     interfaceregistry.register(req.body.keyword, function (response){
@@ -230,6 +237,41 @@ var request = require ('reqwest');            // simplified HTTP request client
       console.log ("this invocation writeToFile works");
   // calling the WriteText() function. 
       WriteText();
+  });
+
+
+  //telling express to listen to requests to / and run the function when it sees one
+  app.get('/getdata', function(req,res){
+   // res.send('hello world'); //this works but replace with data
+    // res.render('../assets/line_graph/data/line_graph_6151.csv');
+    res.render('getdata.html');
+  });
+
+  app.get('/download', function(req, res){
+
+    res.setHeader('Content-disposition', 'attachment; filename=line_graph_6151.csv');
+
+    res.setHeader('Content-type', 'csv');
+
+    var path_to_file = '../assets/line_graph/data/line_graph_6151.csv';
+
+    var file1 = fs.readFile(path.normalize(__dirname + '/../public/assets/line_graph/data/line_graph_6151.csv'));
+
+
+    
+    var file = (path.normalize(__dirname + '/../public/assets/line_graph/data/line_graph_6151.csv'));
+
+    //console.log("the file is" + file);
+
+    var filename = path.basename(filename);
+    var mimetype = mime.lookup(file);
+
+    res.setHeader('Content-disposition', 'attachment; filename=' + filename);
+    res.setHeader('Content-type', mimetype);
+
+    var filestream = fs.createReadStream(file);
+    filestream.pipe(res);
+  
   });
 
 
