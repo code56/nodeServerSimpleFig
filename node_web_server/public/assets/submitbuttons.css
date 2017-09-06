@@ -1,24 +1,14 @@
-.fsSubmitbutton {
-   background-color: #4CAF50; /* Green */
-   border: none;
-   color: white;
-   padding: 15px 32px;
-   text-align: center;
-   text-decoration: none;
-   display: inline-block;
-   font-size: 16px;
-}
-
 /* Buttons, yay! */
 button,
 input[type="reset"],
 input[type="submit"],
 input[type="button"] {
-  background: #4CAF50;
+  background: #22a0d8;
   border: 0;
   color: #fff;
   padding: 4px 10px;
   text-shadow: none;
+  font-size: 16px;
 
   -webkit-border-radius: 3px;
           border-radius: 3px;
