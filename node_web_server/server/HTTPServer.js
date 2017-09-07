@@ -98,7 +98,8 @@ var mime = require('mime');
     //console.log('The gene name is: ', rows); 
   });
 */
-  connection.end();
+  
+    connection.end();
 
 
   // elexe to afto ti kani
