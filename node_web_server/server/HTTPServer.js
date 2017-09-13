@@ -23,8 +23,7 @@ var bodyParser = require('body-parser');
     //,mongo = require('mongodb');  //makes a connection with the mongo db
 //var IR = require('../views/lib/register');       
 //var interfaceregistry = new IR(); 
-var fs = require('fs');                         //for writing files in node.js 
-
+var busboy = require('connect-busboy');       // middleware for form/file upload
 
 
 var jsonParser = bodyParser.json();
@@ -45,8 +44,10 @@ var request = require ('reqwest');            // simplified HTTP request client
 
 // for downloading the data file
 var path = require('path');
-    fs = require('fs');
+var fs = require('fs-extra');                // File system - for file manipulation
 var mime = require('mime');
+
+
 
 
 
@@ -112,7 +113,13 @@ var mime = require('mime');
 
   const PORT=8183; 
 
-  app.use(express.static("../public"));        //put accesible public directory and its sub directories
+  app.use(busboy());
+
+  //app.use(express.static("../public"));        //put accesible public directory and its sub directories
+  
+  app.use(express.static(path.join(__dirname, 'public')));
+
+
   app.set('views', '../views');                //put accesible views
 
   app.disable('etag');                        //something needed from Express. To disable etag generation

@@ -233,7 +233,8 @@
       "dependencies": {
         "isarray": {
           "version": "0.0.1",
-          "from": "isarray@0.0.1"
+          "from": "isarray@0.0.1",
+          "resolved": "https://registry.npmjs.org/isarray/-/isarray-0.0.1.tgz"
         },
         "readable-stream": {
           "version": "1.1.14",
@@ -358,6 +359,11 @@
       "version": "2.1.0",
       "from": "configstore@>=2.0.0 <3.0.0",
       "resolved": "https://registry.npmjs.org/configstore/-/configstore-2.1.0.tgz"
+    },
+    "connect-busboy": {
+      "version": "0.0.2",
+      "from": "connect-busboy@0.0.2",
+      "resolved": "https://registry.npmjs.org/connect-busboy/-/connect-busboy-0.0.2.tgz"
     },
     "content-disposition": {
       "version": "0.5.2",
@@ -497,7 +503,8 @@
         },
         "readable-stream": {
           "version": "1.1.14",
-          "from": "readable-stream@>=1.1.0 <1.2.0"
+          "from": "readable-stream@1.1.14",
+          "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-1.1.14.tgz"
         }
       }
     },
@@ -793,6 +800,11 @@
       "version": "0.1.7",
       "from": "from@>=0.0.0 <1.0.0",
       "resolved": "https://registry.npmjs.org/from/-/from-0.1.7.tgz"
+    },
+    "fs-extra": {
+      "version": "4.0.2",
+      "from": "fs-extra@*",
+      "resolved": "https://registry.npmjs.org/fs-extra/-/fs-extra-4.0.2.tgz"
     },
     "fs.realpath": {
       "version": "1.0.0",
@@ -1737,6 +1749,11 @@
       "from": "json3@3.3.2",
       "resolved": "https://registry.npmjs.org/json3/-/json3-3.3.2.tgz"
     },
+    "jsonfile": {
+      "version": "4.0.0",
+      "from": "jsonfile@>=4.0.0 <5.0.0",
+      "resolved": "https://registry.npmjs.org/jsonfile/-/jsonfile-4.0.0.tgz"
+    },
     "jsonify": {
       "version": "0.0.0",
       "from": "jsonify@>=0.0.0 <0.1.0",
@@ -1791,7 +1808,8 @@
         },
         "debug": {
           "version": "0.8.1",
-          "from": "debug@>=0.8.0 <0.9.0"
+          "from": "debug@0.8.1",
+          "resolved": "https://registry.npmjs.org/debug/-/debug-0.8.1.tgz"
         }
       }
     },
@@ -2795,6 +2813,11 @@
       "version": "0.0.3",
       "from": "undefsafe@0.0.3",
       "resolved": "https://registry.npmjs.org/undefsafe/-/undefsafe-0.0.3.tgz"
+    },
+    "universalify": {
+      "version": "0.1.1",
+      "from": "universalify@>=0.1.0 <0.2.0",
+      "resolved": "https://registry.npmjs.org/universalify/-/universalify-0.1.1.tgz"
     },
     "unpipe": {
       "version": "1.0.0",
