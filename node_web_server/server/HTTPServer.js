@@ -250,11 +250,11 @@ var mime = require('mime');
 
   app.get('/download', function(req, res){
 
-    res.setHeader('Content-disposition', 'attachment; filename=line_graph_6151.csv');
+    res.setHeader('Content-disposition', 'attachment; filename=stat1.tsv');
 
-    res.setHeader('Content-type', 'csv');
+    res.setHeader('Content-type', 'tsv');
     
-    var file = (path.normalize(__dirname + '/../public/assets/line_graph/data/line_graph_6151.csv'));
+    var file = (path.normalize(__dirname + '/../public/assets/data/stat1.tsv'));
 
     var filename = path.basename(filename);
     var mimetype = mime.lookup(file);
