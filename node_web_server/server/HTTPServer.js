@@ -254,6 +254,9 @@ var mime = require('mime');
 
     res.setHeader('Content-type', 'tsv');
     
+    // this needs to change dynanamically according to which optional data is at the time 
+    // visualised at the component. 
+    
     var file = (path.normalize(__dirname + '/../public/assets/data/stat1.tsv'));
 
     var filename = path.basename(filename);
