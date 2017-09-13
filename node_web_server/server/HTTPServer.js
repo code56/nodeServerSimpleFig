@@ -289,8 +289,12 @@ var mime = require('mime');
             console.log('Uploading: ' + filename);
 
             //Path where image will be uploaded
-            fstream = fs.createWriteStream(path.normalize(__dirname + '/../img/' + filename));   //might need to do path.normalize? 
-            console.log ('the path to the file is' + (path.normalize(__dirname + '/../img/' + filename)));
+            //fstream = fs.createWriteStream(path.normalize(__dirname + '/../img/' + filename));  //the important bit is the normalize and the /../
+            fstream = fs.createWriteStream(path.normalize(__dirname + '/../public/assets/line_graph/data/' + filename));  //the important bit is the normalize and the /../
+
+            //console.log ('the path to the file is' + (path.normalize(__dirname + '/../img/' + filename)));
+            console.log ('the path to the file is' + (path.normalize(__dirname + '/../public/assets/line_graph/data/' + filename)));
+
             file.pipe(fstream);
             fstream.on('close', function (){
                 console.log('Upload Finished of ' + filename);
