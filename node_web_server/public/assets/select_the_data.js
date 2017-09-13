@@ -49,6 +49,17 @@ dropdown('#myDropdown');
 //});
 
 
+// https://css-tricks.com/dynamic-dropdowns/
+
+
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+$("#first-choice").change(function() {
+   $("#second-choice").load("textdata/" + $(this).val() + ".txt");
+});
+
+
 
 
 
