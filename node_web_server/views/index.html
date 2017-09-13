@@ -155,9 +155,14 @@ MathJax.Hub.Config({
 <script type="text/JavaScript" src="/Users/kaimakle/Documents/Ph.D./node_web_server_simpler_biojs/node_web_server/server/HTTPServer.js"></script>
 
 <!-- for the dynamic dropdown that would bring the data from the folder as it gets upload, and will be updated dynamically -->
+<!--the stylesheet below is the one for the dropdown, but when activated affects the css of the whole page -->
+<!-- <link rel='stylesheet' href='../assets/css/style.css'>
+ -->	
 
-<link rel='stylesheet' href='css/style.css'>
-	
+<!--https://css-tricks.com/dynamic-dropdowns/
+what is does, it looks at the txt files and then brings up the other options. but this is not what I want
+-->
+
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
 	<script>
@@ -356,7 +361,7 @@ MathJax.Hub.Config({
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.3/d3-tip.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="https://wzrd.in/bundle/biojs-vis-box-plot@0.1.9"></script>
-<script src="../assets/line_graph/js.js"></script> 
+<script src="../assets/line_graph/js.js"></script>  <!--is the one that has the data_url and involves the data_url -->
 
 <script type="text/javascript">
   //biovisexpressionbar = require("bio-vis-expression-bar");
@@ -364,7 +369,7 @@ MathJax.Hub.Config({
   var container_div = "biojs-vis-scatter-plot";
   
   //later I will be getting the data from the SQL Db upon user request
-  var data_url = "../assets/line_graph/data/line_graph_6151.csv" ;
+  var data_url = "../assets/line_graph/data/line_graph_6131.csv" ;  //make this dynamically changable according to what user selects from the dropdown menu. 
   var app = require('biojs-vis-scatter-plot'); 
 
   var options = {
@@ -587,10 +592,10 @@ data in the data uploading directory/// testing this here -->
 </script>
   <div style="width: 100%; float:left; margin: 1%; background-color: white;"></div>
 
-
+<!-- 
 <form action="http://www.wheat-expression.com/">
 <input type="submit" value="Go to expVIP">
-</form>
+</form> -->
 
 <div style="width:50%; height: 50px; background-color: white;">
   <div style="width: 50%; float:left; margin: 1%; background-color: white;"></div>
