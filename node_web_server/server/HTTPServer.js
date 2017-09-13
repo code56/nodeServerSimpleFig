@@ -115,9 +115,9 @@ var mime = require('mime');
 
   app.use(busboy());
 
-  //app.use(express.static("../public"));        //put accesible public directory and its sub directories
+  app.use(express.static("../public"));        //put accesible public directory and its sub directories
   
-  app.use(express.static(path.join(__dirname, 'public')));
+  //app.use(express.static(path.join(__dirname, 'public'))); this is bringing me errors/ doesn't work. 
 
 
   app.set('views', '../views');                //put accesible views
@@ -272,6 +272,33 @@ var mime = require('mime');
     filestream.pipe(res);
   
   });
+
+
+  /* ========================================================== 
+  Create a Route (/upload) to handle the Form submission 
+  (handle POST requests to /upload)
+  Express v4  Route definition
+  ============================================================ */
+
+  app.route('/upload')
+     .post(function(req, res, next){
+
+        var fstream;
+        req.pipe(req.busboy);
+        req.busboy.on('file', function (fieldname, file, filename){
+            console.log('Uploading: ' + filename);
+
+            //Path where image will be uploaded
+            fstream = fs.createWriteStream(path.normalize(__dirname + '/../img/' + filename));   //might need to do path.normalize? 
+            console.log ('the path to the file is' + (path.normalize(__dirname + '/../img/' + filename)));
+            file.pipe(fstream);
+            fstream.on('close', function (){
+                console.log('Upload Finished of ' + filename);
+                res.redirect('back');
+
+            });
+        });
+      });
 
 
   app.listen(PORT, function() {
