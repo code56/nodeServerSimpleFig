@@ -1,16 +1,32 @@
-// Author: Evanthia Kaimaklioti
-// git account: code56
-// Date: June 2016
-// Update: April 2017
-// this is a version of the node_web_server that will be working with a simple BioJS component than expVIP
-// will be working with the biojs-vis-line-graph
-// this is the script for the node server
-// contains code for firing up the node server
-// and code for navigating to different HTML pages according to the different buttons -- actions being activated
-// in the main HTML page.
-// to bring up the main page; connect to the server - localhost in the browser "/page"
-//notes: npm install express@* --save
-//npm install --save package-nave@* other-package@* whatever-thing@*
+/** --------------------------------------------------------------------------
+ *           
+ *
+ * --------------------------------------------------------------------------*/
+
+/**
+ * // Author: Evanthia Kaimaklioti
+ * git account: code56
+ * Date: June 2016
+ * Update: Sept 2017
+ * this is a version of the node_web_server that will be working with a simple BioJS component than expVIP
+ * will be working with the biojs-vis-line-graph
+ * this is the script for the node server
+ * contains code for firing up the node server
+ * and code for navigating to different HTML pages according to the different buttons -- actions being activated
+ * in the main HTML page.
+ * to bring up the main page; connect to the server - localhost in the browser "/page"
+ * notes: npm install express@* --save
+ * npm install --save package-nave@* other-package@* whatever-thing@*
+ * need to have mysql installed and be running
+ * need to create a user by these commands once you have mysql running: 
+ * mysql> CREATE USER 'admin'@'localhost';
+ * mysql> GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost';
+ * 
+ * 
+ *
+ * 
+ * 
+ */
 
 
 
@@ -30,14 +46,15 @@ var jsonParser = bodyParser.json();
 var multer = require('multer');                 // v1.0.5 - for handling multipart/form-data - for uploading files
 var upload = multer();
 var encoding = 'utf8';
-var mysql = require('mysql');                  // kitaxe pou evala to mysql kai pou to kalo.
+var mysql = require('mysql');                  // I have installed the mysql npm module (v 2.11.1) //need to run this command for the mysql to start: 
 var connection = mysql.createConnection({
   host : 'localhost',
-  user : 'simpler-component',
-  password: 'simpler-component',
-  database : 'simpler-component',
-  port: 3306,
- // socket: 'localhost:/Applications/MAMP/tmp/mysql/mysql.sock' // is this necessary? 
+  user : 'admin', 
+  password: '',  
+ // database : 'simpler-component',
+  port: 3306
+ // socket: 'localhost:/Applications/MAMP/tmp/mysql/mysql.sock' // is this necessary? if i dont have MAMP server on --> ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/Applications/MAMP/tmp/mysql/mysql.sock' (2)
+
   // do i need an adapter? 
 });
 var request = require ('reqwest');            // simplified HTTP request client
@@ -66,7 +83,7 @@ var mime = require('mime');
     if(err){
       console.log('error connecting to DB');
     } else {
-    console.log('connected!');
+      console.log('connected!');
     };
   });
 
