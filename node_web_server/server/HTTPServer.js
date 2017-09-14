@@ -21,7 +21,8 @@
  * need to create a user by these commands once you have mysql running: 
  * mysql> CREATE USER 'admin'@'localhost';
  * mysql> GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost';
- * 
+ * and to start the mysql sevrer run in a new terminal: mysqld, this will give you info on the socket 
+ * your mysql is sitting at and to starting up run: mysql --socket=/tmp/mysql.sock -u root -p
  * 
  *
  * 
