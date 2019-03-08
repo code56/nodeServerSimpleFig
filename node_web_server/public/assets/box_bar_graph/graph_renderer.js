@@ -76,8 +76,8 @@ var box_bar_options = {
         statistical_test: 'log2',
         default_min_value: 0, // Means y_axis will be at most 0 (or less)
         default_max_value: 0, // Means y_axis will be at least 0 (or more)
-       // url: '/assets/data/stat1.tsv',
-        url: '/assets/data/ds_id_5003_scatter_gata3.tsv',
+        url: 'assets/data/stat1.tsv',
+        //url: '/assets/data/ds_id_5003_scatter_gata3.tsv',
 
         /**
          * Value is the main value that is used for plotting the data.
@@ -103,7 +103,7 @@ var box_bar_options = {
     svg_info: {
         //div_id: rootDiv.id, // The ID of the div you want to draw the graph in.
         div_id: "box-bar-plot",
-        width: 1000,
+        width: 2000,
         height: 450,
         margin: {top: 150, left: 15, bottom: 200, right: 50},
         stroke: "#AEB6BF",
